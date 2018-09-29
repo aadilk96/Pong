@@ -44,13 +44,39 @@ git add path/src/routes/file1.js path/src/routes/file2.js
 git add . (in order to add all the files you changed)
 ```
 
+6. When you do a commit always add a meaningfull comment about the changes:
+
+```
+git commit -m "relevant comment about the changes"
+```
+
+7. Finally you want to push to your branch in order to get the changes in the your repository branch:
+
+```
+git push origin new_feature_to_be_implemented
+```
+
 ## Pull Request Process
 
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a 
-   build.
-2. Update the README.md with details of changes to the interface, this includes new environment 
-   variables, exposed ports, useful file locations and container parameters.
-3. Increase the version numbers in any examples files and the README.md to the new version that this
-   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you 
-   do not have permission to do that, you may request the second reviewer to merge it for you.
+To create a pull request, you must have changes committed to your new branch.
+
+Go to the repository page on github. And click on "Pull Request" button in the repo header.
+
+![Pull Request Button](https://f.cloud.github.com/assets/676185/316845/2ea7d418-9848-11e2-90af-5b8f31497a51.png)
+
+Pick the branch you wish to have merged using the "Head branch" dropdown. You should leave the rest of the fields as is, unless you are working from a remote branch. In that case, just make sure that the base repo and base branch are set correctly.
+
+![Head Branch Dropdown](https://f.cloud.github.com/assets/676185/316857/0d51b008-9849-11e2-909a-36e6f12436b4.png)
+
+Enter a **title** and **description** for your pull request. Remember you can use [Github Flavored Markdown](https://help.github.com/articles/github-flavored-markdown) in the description and comments
+
+![Title and Description](https://f.cloud.github.com/assets/676185/316873/0c0e4cc8-984a-11e2-89f5-703c31217e17.png)
+
+Finally, click on the green "Send pull request" button to finish creating the pull request.
+
+![Send Pull Request](https://f.cloud.github.com/assets/676185/316876/30d6d0ca-984a-11e2-9c5e-420223c35ed9.png)
+
+You should now see an open pull request.
+
+![Open Pull Request](https://f.cloud.github.com/assets/676185/316899/6a62a7c8-984b-11e2-92ee-182ef257b574.png)
+
