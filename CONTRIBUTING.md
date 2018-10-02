@@ -80,3 +80,24 @@ You should now see an open pull request.
 
 ![Open Pull Request](https://f.cloud.github.com/assets/676185/316899/6a62a7c8-984b-11e2-92ee-182ef257b574.png)
 
+## Handle branches
+
+Below there is a list containing useful commands to operate with branches:
+
+* check for changes between any two branches
+
+```
+git diff branch1 branch2
+```
+
+* check for changes between the remote branch and the local one
+
+```
+git diff HEAD local_branch
+```
+
+* check for the file names that were changed between two branched
+
+```
+git diff branch1 branch2 --name-only
+```
