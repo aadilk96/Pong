@@ -101,3 +101,9 @@ git diff HEAD local_branch
 ```
 git diff branch1 branch2 --name-only
 ```
+
+* in order to merge all the files from the remote to your local branch (check before that you are on the right branch):
+
+```
+git fetch
+```
