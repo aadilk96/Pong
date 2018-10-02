@@ -3,9 +3,15 @@
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change.
 
-## Handle branches and commits
+## Handle commits
 
 Whenever you want to start working on a new feature you should follow the steps below:
+
+0. First of all you have to clone the repository to your local machine:
+
+```
+git clone https://github.com/user/repository.git
+```
 
 1. Every time you create a new branch you should have the latest changes in master.
 
@@ -106,4 +112,10 @@ git diff branch1 branch2 --name-only
 
 ```
 git fetch
+```
+
+* see recent commit history an a branch
+
+```
+git log
 ```
