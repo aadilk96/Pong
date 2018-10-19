@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { AppRegistry, TextInput } from 'react-native';
 
-export default class HelloWorldApp extends Component {
+export default class TextInputFB extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: 'Useless Placeholder' };
+  }
+
   render() {
     return (
-      <View>
-        <Text>Hello world!</Text>
-      </View>
+      <TextInput
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(text) => this.setState({text})}
+        value={this.state.text}
+      />
     );
   }
 }
+
+// skip this line if using Create React Native App
+AppRegistry.registerComponent('AwesomeProject', () => TextInputFB);
