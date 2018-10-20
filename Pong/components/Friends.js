@@ -8,8 +8,7 @@ export default class FP extends React.Component {
  state = {
    data: [],
    page: 0,
-   loading: false,
-   id: AsyncStorage.getItem('userId')
+   loading: false
  };
 
  componentWillMount() {
@@ -19,19 +18,20 @@ export default class FP extends React.Component {
  fetchData = async () => {
    this.setState({ loading: true });
    const response = await fetch(
-     `https://pongapi.herokuapp.com/api/getFriends/${this.state.id}`
+     `https://randomuser.me/api?results=15&seed=hi&page=${this.state.page}`
    );
    const json = await response.json();
-   var actualFriends = [];
-   for (var i = 0; i < json.friends.length; i++) {
-    const responseDetail = await fetch(
-      `https://pongapi.herokuapp.com/api/getUserById/${json.friends[i].user2}`
-    );
-    const jsonDetail = await responseDetail.json();
-    actualFriends.push(jsonDetail.user)
-   }
+   // var actualFriends = [];
+   // for (var i = 0; i < json.friends.length; i++) {
+   //  const responseDetail = await fetch(
+   //    `https://pongapi.herokuapp.com/api/getUserById/${json.friends[i].user2}`
+   //  );
+   //  const jsonDetail = await responseDetail.json();
+   //  actualFriends.push(jsonDetail.user)
+   // }
    this.setState(state => ({
-     data: [...state.data, ...actualFriends],
+     // data: [...state.data, ...actualFriends],
+     data: [...state.data, ...json.results],
      loading: false
    }));
  };
@@ -46,7 +46,7 @@ export default class FP extends React.Component {
        <List>
          <FlatList
            data={this.state.data}
-           keyExtractor={(x, i) => i.toString()}
+           keyExtractor={(x, i) => i}
            onEndReached={() => this.handleEnd()}
            onEndReachedThreshold={0}
            ListFooterComponent={() =>
@@ -56,7 +56,8 @@ export default class FP extends React.Component {
            renderItem={({ item }) =>
              <ListItem
                roundAvatar
-               title={`${item.name}`}
+               avatar={{ uri: item.picture.thumbnail }}
+               title={`${item.name.first} ${item.name.last}`}
                onPress={() => {
                this.popupDialog.show();
              }}
@@ -66,7 +67,7 @@ export default class FP extends React.Component {
        // Pop-Up for each Contact
        <PopupDialog
           width={85}
-          height={400}
+          height={500}
          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
          >
          <View styles={styles.inrow}>
