@@ -28,6 +28,18 @@ export default class Generator extends Component {
 
   render() {
     const {facebook, linkedin, snapchat, instagram, twitter} = this.state;
+    const fb = this.state.stateFacebook === true ? `${this.state.facebook}` : null;
+    const tw = this.state.stateTwitter === true ? `${this.state.twitter}` : null;
+    const sc = this.state.stateSnapchat === true ? `${this.state.snapchat}` : null;
+    const ig = this.state.stateInstagram === true ? `${this.state.instagram}` : null;
+    const li = this.state.stateLinkedin === true ? `${this.state.linkedin}` : null;
+    const jsonQR = {
+      facebook: fb,
+      instagram: ig,
+      snapchat: sc,
+      twitter: tw,
+      linkedin: li,
+    }
     return (
       <View style={styles.container}>
         <View style={styles.inrow}>
@@ -101,7 +113,7 @@ export default class Generator extends Component {
         </View>
 
         <Button
-          title="Show Dialog"
+          title="Pong me"
           onPress={() => {
           this.popupDialog.show();
         }}
@@ -112,13 +124,7 @@ export default class Generator extends Component {
           >
           <View styles={{alignItems: 'center'}}>
           <QRCode
-            value={JSON.stringify({
-              facebook: `${this.state.facebook}`,
-              instagram: `${this.state.instagram}`,
-              snapchat: `${this.state.snapchat}`,
-              twitter: `${this.state.twitter}`,
-              linkedin: `${this.state.linkedin}`
-            })}
+            value={JSON.stringify(jsonQR)}
             size={200}
             bgColor='purple'
             fgColor='white'/>
