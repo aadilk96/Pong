@@ -8,7 +8,8 @@ export default class FP extends React.Component {
  state = {
    data: [],
    page: 0,
-   loading: false
+   loading: false,
+   id: 4
  };
 
  componentWillMount() {
@@ -18,11 +19,19 @@ export default class FP extends React.Component {
  fetchData = async () => {
    this.setState({ loading: true });
    const response = await fetch(
-     `https://randomuser.me/api?results=15&seed=hi&page=${this.state.page}`
+     `https://pongapi.herokuapp.com/api/getFriends/${this.state.id}`
    );
    const json = await response.json();
+   var actualFriends = [];
+   for (var i = 0; i < json.friends.length; i++) {
+    const responseDetail = await fetch(
+      `https://pongapi.herokuapp.com/api/getUserById/${json.friends[i].user2}`
+    );
+    const jsonDetail = await responseDetail.json();
+    actualFriends.push(jsonDetail.user)
+   }
    this.setState(state => ({
-     data: [...state.data, ...json.results],
+     data: [...state.data, ...actualFriends],
      loading: false
    }));
  };
@@ -37,7 +46,7 @@ export default class FP extends React.Component {
        <List>
          <FlatList
            data={this.state.data}
-           keyExtractor={(x, i) => i}
+           keyExtractor={(x, i) => i.toString()}
            onEndReached={() => this.handleEnd()}
            onEndReachedThreshold={0}
            ListFooterComponent={() =>
@@ -47,8 +56,7 @@ export default class FP extends React.Component {
            renderItem={({ item }) =>
              <ListItem
                roundAvatar
-               avatar={{ uri: item.picture.thumbnail }}
-               title={`${item.name.first} ${item.name.last}`}
+               title={`${item.name}`}
                onPress={() => {
                this.popupDialog.show();
              }}
