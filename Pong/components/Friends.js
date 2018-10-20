@@ -65,8 +65,8 @@ export default class FP extends React.Component {
        </List>
        // Pop-Up for each Contact
        <PopupDialog
-          width={65}
-          height={325}
+          width={85}
+          height={400}
          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
          >
          <View styles={styles.inrow}>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 60,
-    width: 65,
-    height: 65
+    width: 85,
+    height: 85
   },
 })
