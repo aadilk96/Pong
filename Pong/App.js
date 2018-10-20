@@ -3,32 +3,59 @@ import {StyleSheet, Text, View, TextInput} from 'react-native';
 import Form from 'react-native-form';
 import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
 import SM from './components/selectSocialMedia';
+import { createBottomTabNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      press: false
-    };
-  }
-
+class HomeScreen extends React.Component {
   render() {
-    const { press } = this.state;
-    if(this.state.press === false) {
-      return (
-        <View style={styles.View}>
-          <Button onPress={() => {this.setState({press: !press})
-            console.log(this.state.press)
-          }}></Button>
-        </View>
-      );
-  } else {
     return (
       <SM />
     );
-    }
   }
 }
+
+class SettingsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Settings!</Text>
+      </View>
+    );
+  }
+}
+
+export default createBottomTabNavigator({
+  Home: { screen: HomeScreen },
+  Settings: { screen: SettingsScreen },
+});
+//
+// export default class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       press: false
+//     };
+//   }
+//
+//   render() {
+//     const { press } = this.state;
+//     if(this.state.press === false) {
+//       return (
+//         <View style={styles.View}>
+//           <Button onPress={() => {this.setState({press: !press})
+//             console.log(this.state.press)
+//           }}></Button>
+//           <Button onPress={() => {this.setState({press: !press})
+//             console.log(this.state.press)
+//           }}></Button>
+//         </View>
+//       );
+//   } else {
+//     return (
+//       <SM />
+//     );
+//     }
+//   }
+// }
 
 const styles = StyleSheet.create({
   container: {
