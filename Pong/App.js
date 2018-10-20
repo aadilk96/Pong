@@ -1,24 +1,70 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, AppRegistry, TextInput } from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View, TextInput} from 'react-native';
+import Form from 'react-native-form';
+import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
+import firstScreen from './components/firstScreen'
 
-export default class PizzaTranslator extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {
+      press: false
+    };
   }
 
   render() {
+    const { press } = this.state;
+    if(this.state.press === false) {
+      return (
+        <View style={styles.View}>
+          <Button onPress={() => {this.setState({press: !press})
+            console.log(this.state.press)
+          }}></Button>
+        </View>
+      );
+  } else {
     return (
-      <View style={{padding: 10}}>
-        <TextInput
-          style={{height: 40}}
-          placeholder="Type here to translate!"
-          onChangeText={(text) => this.setState({text})}
-        />
-        <Text style={{padding: 10, fontSize: 42}}>
-          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
-        </Text>
-      </View>
+      <firstScreen />
     );
+    }
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff'
+  },
+
+  Text: {
+    fontSize: 30,
+    textAlign: 'center',
+    padding: 10
+  },
+
+  View: {
+    top: 10,
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
+  },
+
+  View_inrow: {
+    flexDirection: 'row',
+    height: 80,
+    padding: 5
+  },
+
+  FormInput_container2: {
+    width: 200,
+  },
+
+  FormInput_container: {
+    width: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
+  }
+
+});
