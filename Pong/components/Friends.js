@@ -9,7 +9,7 @@ export default class FP extends React.Component {
    data: [],
    page: 0,
    loading: false,
-   id: 4
+   id: AsyncStorage.getItem('userId')
  };
 
  componentWillMount() {
