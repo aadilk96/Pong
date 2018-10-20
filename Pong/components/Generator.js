@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import QRCode from 'react-native-qrcode';
 import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
+import PopupDialog from 'react-native-popup-dialog';
 
 import {
     AppRegistry,
@@ -99,17 +100,31 @@ export default class Generator extends Component {
           />
         </View>
 
-        <QRCode
-          value={JSON.stringify({
-            // facebook: `${state.facebook}`,
-            // instagram: `${state.instagram}`,
-            // snapchat: `${state.snapchat}`,
-            // twitter: `${state.twitter}`,
-            // linkedin: `${state.linkedin}`
-          })}
-          size={200}
-          bgColor='purple'
-          fgColor='white'/>
+        <Button
+          title="Show Dialog"
+          onPress={() => {
+          this.popupDialog.show();
+        }}
+        />
+
+        <PopupDialog
+          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+          >
+          <View styles={{alignItems: 'center'}}>
+          <QRCode
+            value={JSON.stringify({
+              facebook: `${this.state.facebook}`,
+              instagram: `${this.state.instagram}`,
+              snapchat: `${this.state.snapchat}`,
+              twitter: `${this.state.twitter}`,
+              linkedin: `${this.state.linkedin}`
+            })}
+            size={200}
+            bgColor='purple'
+            fgColor='white'/>
+          </View>
+        </PopupDialog>
+
       </View>
     );
   };
