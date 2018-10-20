@@ -8,6 +8,9 @@ import Camera from './components/Camera';
 import Generator from './components/Generator';
 import FP from './components/Friends';
 import Login from './components/Login';
+import checkIfFirstLaunch from './components/firstLaunch';
+
+
 
 class CameraScreen extends React.Component {
   render() {
@@ -26,23 +29,33 @@ class FriendsScreen extends React.Component {
 }
 
 class GenerateScreen extends React.Component {
-  render() {
-    return (
-      <Generator />
-    );
+  state = {
+    isFirstLaunch: false,
+    hasCheckedAsyncStorage: false
+  };
+  
+  async componentWillMount() {
+    const isFirstLaunch = await checkIfFirstLaunch();
+    this.setState({ isFirstLaunch, hasCheckedAsyncStorage: true });
   }
-}
-
-class loginScreen extends React.Component {
   render() {
-    return (
-      <Login />
-    );
+    {
+      const { hasCheckedAsyncStorage, isFirstLaunch } = this.state;
+  
+      if (!hasCheckedAsyncStorage) {
+        return null;
+      }
+  
+      if (isFirstLaunch) {
+        return <Login />
+      } else {
+        return <Generator />
+      }
+    }
   }
 }
 
 export default createBottomTabNavigator({
-  Login: { screen: loginScreen },
   Camera: { screen: CameraScreen },
   Friends: { screen: FriendsScreen },
   Generate: {screen: GenerateScreen},

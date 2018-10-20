@@ -36,6 +36,8 @@ export default class Login extends Component {
     const ig = this.state.stateInstagram === true ? `${this.state.instagram}` : null;
     const li = this.state.stateLinkedin === true ? `${this.state.linkedin}` : null;
     const jsonQR = {
+      name: this.state.name,
+      phone: this.state.phone,
       facebook: fb,
       instagram: ig,
       snapchat: sc,
@@ -113,8 +115,19 @@ export default class Login extends Component {
         <Button
           title="Update"
           onPress={() => {
-          console.log("yes");
-        }}
+            function postData(url = `https://pongapi.herokuapp.com/api/newUser`, data = jsonQR) {
+              // Default options are marked with *
+                const response =  fetch(url, {
+                  method: "POST", // *GET, POST, PUT, DELETE, etc.
+                  mode: "no-cors", // no-cors, cors, *same-origin
+                  cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                  headers: {
+                      "Content-Type": "application/json; charset=utf-8",
+                  },
+                  redirect: "follow", // manual, *follow, error
+                  body: JSON.stringify(data), // body data type must match "Content-Type" header
+                }).then(newUser => AsyncStorage.setItem('userId', newUser.id))
+          }}}
         />
       </View>
     );
