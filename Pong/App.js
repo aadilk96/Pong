@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
-import Form from 'react-native-form';
 import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
-import SM from './components/selectSocialMedia';
-import FP from './components/friendsPage'; 
 import { createBottomTabNavigator } from 'react-navigation';
+import { Actions, Router, Scene } from "react-native-router-flux";
+import Form from 'react-native-form';
+import SM from './components/selectSocialMedia';
+import FP from './components/Friends';
 
 class HomeScreen extends React.Component {
   render() {
@@ -24,8 +25,9 @@ class SettingsScreen extends React.Component {
 
 export default createBottomTabNavigator({
   Home: { screen: HomeScreen },
-  Settings: { screen: SettingsScreen },
+  Friends: { screen: SettingsScreen },
 });
+
 //
 // export default class App extends React.Component {
 //   constructor(props) {
