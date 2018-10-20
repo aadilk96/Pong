@@ -85,7 +85,7 @@ export default class Login extends Component {
         </View>
 
         <View style={styles.inrow}>
-          <SocialIcon type='snapchat'/>
+          <SocialIcon type='snapchat' style={{backgroundColor: '#e5e200'}}/>
           <TextInput
             style={styles.input}
             onChangeText={(text) => this.setState({snapchat: text})}
