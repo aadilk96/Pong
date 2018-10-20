@@ -6,6 +6,7 @@ import SM from './components/selectSocialMedia';
 import { createBottomTabNavigator } from 'react-navigation';
 import CameraScreen from './components/Camera';
 import Generator from './components/Generator';
+import FP from './components/Friends';
 
 class HomeScreen extends React.Component {
   render() {
@@ -18,7 +19,7 @@ class HomeScreen extends React.Component {
 class SettingsScreen extends React.Component {
   render() {
     return (
-      <SM />
+      <FP />
     );
   }
 }
@@ -36,35 +37,6 @@ export default createBottomTabNavigator({
   Settings: { screen: SettingsScreen },
   Generate: {screen: GenerateScreen},
 });
-//
-// export default class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       press: false
-//     };
-//   }
-//
-//   render() {
-//     const { press } = this.state;
-//     if(this.state.press === false) {
-//       return (
-//         <View style={styles.View}>
-//           <Button onPress={() => {this.setState({press: !press})
-//             console.log(this.state.press)
-//           }}></Button>
-//           <Button onPress={() => {this.setState({press: !press})
-//             console.log(this.state.press)
-//           }}></Button>
-//         </View>
-//       );
-//   } else {
-//     return (
-//       <SM />
-//     );
-//     }
-//   }
-// }
 
 const styles = StyleSheet.create({
   container: {

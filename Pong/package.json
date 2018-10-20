@@ -17,6 +17,7 @@
     "react-native-is-iphonex": "^1.0.1",
     "react-native-popup-dialog": "^0.15.1",
     "react-native-qrcode": "^0.2.7",
+    "react-native-router-flux": "^4.0.5",
     "react-navigation": "^2.18.0"
   }
 }
