@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 import Form from 'react-native-form';
-import { Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
+import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,12 @@ export default class App extends React.Component {
       linkedin: '',
       snapchat: '',
       instagram: '',
-      twitter: ''
+      twitter: '',
+      stateFacebook: false,
+      stateLinkedin: false,
+      stateSnapchat: false,
+      stateInstagram: false,
+      stateTwitter: false
     };
   }
 
@@ -35,6 +40,11 @@ export default class App extends React.Component {
             containerStyle = {styles.FormInput_container2}
             inputStyle = {styles.FormInput_container}
             onChangeText={(facebook) => this.setState({facebook})}/>
+          <CheckBox
+            containerStyle = {{backgroundColor: '#ffffff', borderWidth: 0,  justifyContent: 'center'}}
+            checked={this.state.stateFacebook}
+            onPress={() => this.setState({stateFacebook: !this.state.stateFacebook})}
+          />
         </View>
         <View style={styles.View_inrow}>
           <FormLabel>
@@ -44,6 +54,11 @@ export default class App extends React.Component {
             containerStyle = {styles.FormInput_container2}
             inputStyle = {styles.FormInput_container}
             onChangeText={(twitter) => this.setState({twitter})}/>
+          <CheckBox
+            containerStyle = {{backgroundColor: '#ffffff', borderWidth: 0,  justifyContent: 'center'}}
+            checked={this.state.stateTwitter}
+            onPress={() => this.setState({stateTwitter: !this.state.stateTwitter})}
+          />
         </View>
         <View style={styles.View_inrow}>
           <FormLabel>
@@ -53,6 +68,11 @@ export default class App extends React.Component {
             containerStyle = {styles.FormInput_container2}
             inputStyle = {styles.FormInput_container}
             onChangeText={(instagram) => this.setState({instagram})}/>
+          <CheckBox
+            containerStyle = {{backgroundColor: '#ffffff', borderWidth: 0,  justifyContent: 'center'}}
+            checked={this.state.stateInstagram}
+            onPress={() => this.setState({stateInstagram: !this.state.stateInstagram})}
+          />
         </View>
         <View style={styles.View_inrow}>
           <FormLabel>
@@ -62,6 +82,11 @@ export default class App extends React.Component {
             containerStyle = {styles.FormInput_container2}
             inputStyle = {styles.FormInput_container}
             onChangeText={(linkedin) => this.setState({linkedin})}/>
+          <CheckBox
+            containerStyle = {{backgroundColor: '#ffffff', borderWidth: 0,  justifyContent: 'center'}}
+            checked={this.state.stateLinkedin}
+            onPress={() => this.setState({stateLinkedin: !this.state.stateLinkedin})}
+          />
         </View>
         <View style={styles.View_inrow}>
           <FormLabel>
@@ -71,6 +96,11 @@ export default class App extends React.Component {
             containerStyle = {styles.FormInput_container2}
             inputStyle = {styles.FormInput_container}
             onChangeText={(snapchat) => this.setState({snapchat})}/>
+          <CheckBox
+            containerStyle = {{backgroundColor: '#ffffff', borderWidth: 0,  justifyContent: 'center'}}
+            checked={this.state.stateSnapchat}
+            onPress={() => this.setState({stateSnapchat: !this.state.stateSnapchat})}
+          />
         </View>
       </View>
   );
