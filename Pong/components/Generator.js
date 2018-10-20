@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import QRCode from 'react-native-qrcode';
-import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
+import { CheckBox, Button, FormLabel, FormInput, SocialIcon, FormValidationMessage, Icon, Avatar } from 'react-native-elements';
 import PopupDialog from 'react-native-popup-dialog';
 
 import {
@@ -43,7 +43,7 @@ export default class Generator extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.inrow}>
-          <SocialIcon type='twitter'/>
+          <SocialIcon type='twitter' iconSize = {20} style={{height: 30, width: 30}}/>
           <TextInput
             style={styles.input}
             onChangeText={(text) => this.setState({twitter: text})}
@@ -57,7 +57,7 @@ export default class Generator extends Component {
         </View>
 
         <View style={styles.inrow}>
-          <SocialIcon type='facebook'/>
+          <SocialIcon iconSize = {20} type='facebook' style={{height: 30, width: 30}}/>
           <TextInput
             style={styles.input}
             onChangeText={(text) => this.setState({facebook: text})}
@@ -71,7 +71,7 @@ export default class Generator extends Component {
         </View>
 
         <View style={styles.inrow}>
-          <SocialIcon type='snapchat'/>
+          <SocialIcon iconSize = {20} type='snapchat' style={{height: 30, width: 30, backgroundColor: '#FCCC00'}}/>
           <TextInput
             style={styles.input}
             onChangeText={(text) => this.setState({snapchat: text})}
@@ -79,13 +79,13 @@ export default class Generator extends Component {
           />
           <CheckBox
             containerStyle = {{backgroundColor: '#ffffff', borderWidth: 0,  justifyContent: 'center'}}
-            checked={this.state.stateSnapchat}
+            checked={this.state.stateSnapchatk}
             onPress={() => this.setState({stateSnapchat: !this.state.stateSnapchat})}
           />
         </View>
 
         <View style={styles.inrow}>
-          <SocialIcon type='instagram'/>
+          <SocialIcon type='instagram' iconSize = {20} style={{height: 30, width: 30}}/>
           <TextInput
             style={styles.input}
             onChangeText={(text) => this.setState({instagram: text})}
@@ -99,7 +99,7 @@ export default class Generator extends Component {
         </View>
 
         <View style={styles.inrow}>
-          <SocialIcon type='linkedin'/>
+          <SocialIcon type='linkedin' iconSize = {20} style={{height: 30, width: 30}}/>
           <TextInput
             style={styles.input}
             onChangeText={(text) => this.setState({instagram: text})}
@@ -113,10 +113,12 @@ export default class Generator extends Component {
         </View>
 
         <Button
-          title="Pong me"
-          onPress={() => {
-          this.popupDialog.show();
-        }}
+          <p>
+            title="I'm gonna Pong you now"
+            onPress={() => {
+            this.popupDialog.show();
+          }}
+          </p>
         />
 
         <PopupDialog
@@ -125,8 +127,8 @@ export default class Generator extends Component {
           <View styles={{alignItems: 'center'}}>
           <QRCode
             value={JSON.stringify(jsonQR)}
-            size={200}
-            bgColor='purple'
+            size={300}
+            bgColor='black'
             fgColor='white'/>
           </View>
         </PopupDialog>
@@ -153,7 +155,6 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         borderColor: 'gray',
-        borderWidth: 1,
         margin: 10,
         borderRadius: 5,
         padding: 5,
