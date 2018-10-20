@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ActivityIndicator, FlatList, Text, View, ScrollView } from "react-native";
+import { ActivityIndicator, FlatList, Text, View, ScrollView, TouchableHighlight, AppRegistry, StyleSheet, Image, Linking, } from "react-native";
 import { List, ListItem } from "react-native-elements";
 import PopupDialog from 'react-native-popup-dialog';
 
@@ -55,15 +55,54 @@ export default class FP extends React.Component {
              />}
          />
        </List>
+       // Pop-Up for each Contact
        <PopupDialog
+          width={65}
+          height={325}
          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
          >
-         <View styles={{alignItems: 'center'}}>
-         <Text>'lol'</Text>
-         </View>
-       </PopupDialog>
+         <View styles={styles.inrow}>
+         // Button Hyperlinks for Contact Pop-Up
+          <TouchableHighlight onPress={() => Linking.openURL('http://facebook.com/$`{title}`')}>
+            <Image style={styles.button} source={require('./fb.png')} />
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => Linking.openURL('http://instagram.com/$`{title}`')}>
+            <Image style={styles.button} source={require('./ins.png')} />
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => Linking.openURL('http://linkedin.com/$`{title}`')}>
+            <Image style={styles.button} source={require('./in.png')} />
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => Linking.openURL('http://snapchat.com/$`{title}`')}>
+            <Image style={styles.button} source={require('./sc.png')} />
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => Linking.openURL('http://twitter.com/$`{title}`')}>
+            <Image style={styles.button} source={require('./tw.png')} />
+          </TouchableHighlight>
+
+        </View>
+      </PopupDialog>
      </View>
 
    );
  }
 }
+const styles = StyleSheet.create({
+  inrow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 60,
+    width: 65,
+    height: 65
+  },
+})
