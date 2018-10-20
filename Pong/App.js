@@ -4,19 +4,20 @@ import Form from 'react-native-form';
 import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
 import SM from './components/selectSocialMedia';
 import { createBottomTabNavigator } from 'react-navigation';
-import CameraScreen from './components/Camera';
+import Camera from './components/Camera';
 import Generator from './components/Generator';
 import FP from './components/Friends';
+import Login from './components/Login';
 
-class HomeScreen extends React.Component {
+class CameraScreen extends React.Component {
   render() {
     return (
-      <CameraScreen />
+      <Camera />
     );
   }
 }
 
-class SettingsScreen extends React.Component {
+class FriendsScreen extends React.Component {
   render() {
     return (
       <FP />
@@ -32,9 +33,18 @@ class GenerateScreen extends React.Component {
   }
 }
 
+class loginScreen extends React.Component {
+  render() {
+    return (
+      <Login />
+    );
+  }
+}
+
 export default createBottomTabNavigator({
-  Home: { screen: HomeScreen },
-  Settings: { screen: SettingsScreen },
+  Login: { screen: loginScreen },
+  Camera: { screen: CameraScreen },
+  Friends: { screen: FriendsScreen },
   Generate: {screen: GenerateScreen},
 });
 
