@@ -14,11 +14,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-native-elements": "^0.19.1",
     "react-native-form": "^2.1.3",
-<<<<<<< HEAD
     "react-native-is-iphonex": "^1.0.1",
-=======
-    "react-native-qrcode-scanner": "^1.1.0",
->>>>>>> 8f2e393f5bb2692ada8baf7b94ef76c9585768e6
     "react-navigation": "^2.18.0"
   }
 }
