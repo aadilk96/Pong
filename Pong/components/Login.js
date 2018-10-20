@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import QRCode from 'react-native-qrcode';
 import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
 import PopupDialog from 'react-native-popup-dialog';
+import { AsyncStorage } from 'react-native';
 
 import {
     AppRegistry,
@@ -26,22 +27,50 @@ export default class Login extends Component {
     phone: '+407696969',
     statePhone: false,
     name: 'Tudor Maiereanu',
+    jsonQR: {
+      name: "",
+      phone: "",
+      facebook: "",
+      instagram: "",
+      snapchat: "",
+      twitter: "",
+      linkedin: ""
+    }
   };
+
+  async postData(url = `https://pongapi.herokuapp.com/api/newUser`, data = this.state.jsonQR) {
+              // Default options are marked with *
+                await fetch(url, {
+                  method: "POST", // *GET, POST, PUT, DELETE, etc.
+                  mode: "no-cors", // no-cors, cors, *same-origin
+                  cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                  headers: {
+                      "Content-Type": "application/json; charset=utf-8",
+                  },
+                  redirect: "follow", // manual, *follow, error
+                  body: JSON.stringify(data), // body data type must match "Content-Type" header
+                }).then(res => res.json())
+                  .then(res2 => {
+                    AsyncStorage.setItem('userId', res2.id.toString())
+                });
+                //console.log(response)
+                // .then(() => {
+                //     //AsyncStorage.setItem('userId', )
+                //     console.log(response);
+                //   // console.log(JSON.stringify(data))
+                // })
+                // console.log(response)
+          }
 
   render() {
     const {facebook, linkedin, snapchat, instagram, twitter, name, phone} = this.state;
-    const fb = this.state.stateFacebook === true ? `${this.state.facebook}` : null;
-    const tw = this.state.stateTwitter === true ? `${this.state.twitter}` : null;
-    const sc = this.state.stateSnapchat === true ? `${this.state.snapchat}` : null;
-    const ig = this.state.stateInstagram === true ? `${this.state.instagram}` : null;
-    const li = this.state.stateLinkedin === true ? `${this.state.linkedin}` : null;
-    const jsonQR = {
-      facebook: fb,
-      instagram: ig,
-      snapchat: sc,
-      twitter: tw,
-      linkedin: li,
-    }
+    this.state.jsonQR.facebook = this.state.stateFacebook === true ? `${this.state.facebook}` : null;
+    this.state.jsonQR.twitter = this.state.stateTwitter === true ? `${this.state.twitter}` : null;
+    this.state.jsonQR.snapchat = this.state.stateSnapchat === true ? `${this.state.snapchat}` : null;
+    this.state.jsonQR.instagram = this.state.stateInstagram === true ? `${this.state.instagram}` : null;
+    this.state.jsonQR.linkedin = this.state.stateLinkedin === true ? `${this.state.linkedin}` : null;
+    this.state.jsonQR.phone = this.state.phone;
+    this.state.jsonQR.name = this.state.name;
     return (
       <View style={styles.container}>
         <View style={styles.inrow_name}>
@@ -113,8 +142,8 @@ export default class Login extends Component {
         <Button
           title="Update"
           onPress={() => {
-          console.log("yes");
-        }}
+            this.postData()
+          }}
         />
       </View>
     );
