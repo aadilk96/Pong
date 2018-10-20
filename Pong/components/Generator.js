@@ -114,19 +114,22 @@ export default class Generator extends Component {
 
         <Button
           title="Pong me"
+          backgroundColor='#b71c1c'
           onPress={() => {
           this.popupDialog.show();
         }}
         />
 
         <PopupDialog
+          height={200}
+          width={200}
           ref={(popupDialog) => { this.popupDialog = popupDialog; }}
           >
           <View styles={{alignItems: 'center'}}>
           <QRCode
             value={JSON.stringify(jsonQR)}
             size={200}
-            bgColor='purple'
+            bgColor= '#b71c1c'
             fgColor='white'/>
           </View>
         </PopupDialog>
@@ -152,7 +155,7 @@ const styles = StyleSheet.create({
 
     input: {
         height: 40,
-        borderColor: 'gray',
+        borderColor: '#b71c1c',
         borderWidth: 1,
         margin: 10,
         borderRadius: 5,
