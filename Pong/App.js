@@ -4,11 +4,11 @@ import Form from 'react-native-form';
 import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
 import SM from './components/selectSocialMedia';
 import { createBottomTabNavigator } from 'react-navigation';
-
+import CameraScreen from './components/Camera';
 class HomeScreen extends React.Component {
   render() {
     return (
-      <SM />
+      <CameraScreen />
     );
   }
 }
@@ -16,9 +16,7 @@ class HomeScreen extends React.Component {
 class SettingsScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
+      <SM />
     );
   }
 }
