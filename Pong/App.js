@@ -5,6 +5,8 @@ import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIc
 import SM from './components/selectSocialMedia';
 import { createBottomTabNavigator } from 'react-navigation';
 import CameraScreen from './components/Camera';
+import Generator from './components/Generator';
+
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -21,9 +23,18 @@ class SettingsScreen extends React.Component {
   }
 }
 
+class GenerateScreen extends React.Component {
+  render() {
+    return (
+      <Generator />
+    );
+  }
+}
+
 export default createBottomTabNavigator({
   Home: { screen: HomeScreen },
   Settings: { screen: SettingsScreen },
+  Generate: {screen: GenerateScreen},
 });
 //
 // export default class App extends React.Component {
