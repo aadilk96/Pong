@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      facebook: 'fg',
+      facebook: '',
       linkedin: '',
       snapchat: '',
       instagram: '',
@@ -16,7 +16,8 @@ export default class App extends React.Component {
       stateLinkedin: false,
       stateSnapchat: false,
       stateInstagram: false,
-      stateTwitter: false
+      stateTwitter: false,
+      phone: '+407696969'
     };
   }
 
@@ -31,6 +32,7 @@ export default class App extends React.Component {
             onPress={() => console.log("Works!")}
             activeOpacity={0.7}
           />
+        <Text style={styles.Text} >{this.state.phone}</Text>
         </View>
         <View style={styles.View_inrow}>
           <FormLabel>
@@ -111,6 +113,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
+  },
+
+  Text: {
+    fontSize: 30,
+    textAlign: 'center',
+    padding: 10
   },
 
   View: {
