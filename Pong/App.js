@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TextInput} from 'react-native';
 import Form from 'react-native-form';
 import { CheckBox, Button, FormLabel, FormInput, FormValidationMessage, SocialIcon, Icon, Avatar } from 'react-native-elements';
 import SM from './components/selectSocialMedia';
+import FP from '.components/friendsPage'; 
 import { createBottomTabNavigator } from 'react-navigation';
 
 class HomeScreen extends React.Component {
@@ -16,9 +17,7 @@ class HomeScreen extends React.Component {
 class SettingsScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
+      <FP />
     );
   }
 }
