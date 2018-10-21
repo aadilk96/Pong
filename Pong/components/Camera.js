@@ -134,7 +134,7 @@ export default class CameraScreen extends React.Component {
   onBarCodeScanned = code => {
     this.setState(
       { barcodeScanning: !this.state.barcodeScanning },
-      Alert.alert(`Barcode found: ${code.data}`)
+      Alert.alert(`Adding User ${code.data.name}`)
     );
   };
 
