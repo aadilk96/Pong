@@ -46,7 +46,7 @@ export default class FP extends React.Component {
        <List>
          <FlatList
            data={this.state.data}
-           keyExtractor={(x, i) => i}
+           keyExtractor={(x, i) => i.toString()}
            onEndReached={() => this.handleEnd()}
            onEndReachedThreshold={0}
            ListFooterComponent={() =>
