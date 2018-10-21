@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ActivityIndicator, FlatList, Text, View, ScrollView, TouchableHighlight, AppRegistry, StyleSheet, Image, Linking, } from "react-native";
+import { ActivityIndicator, FlatList, Text, View, ScrollView, TouchableHighlight, AppRegistry, StyleSheet, Image, Linking, AsyncStorage} from "react-native";
 import { List, ListItem } from "react-native-elements";
 import PopupDialog from 'react-native-popup-dialog';
 
